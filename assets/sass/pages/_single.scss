@@ -1,0 +1,40 @@
+.single-post-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .tags {
+    display: flex;
+  }
+
+  .tag {
+    background: $color-primary;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+.tag {
+  background: $color-primary;
+  display: inline-flex;  // Set the display to inline-flex to allow the box to wrap the word
+  align-items: center;   // Center the content vertically within the box
+  justify-content: center; // Center the content horizontally within the box
+  border-radius: 1rem;
+  padding: 0.4rem 1rem;
+
+  a {
+    color: white;
+    text-decoration: none; // Disable underline.
+  }
+
+  &:hover {
+    background:: purple;
+  }
+}

@@ -1,0 +1,22 @@
+@import "util/mixins";
+@import "base/base";
+@import "base/variables";
+@import "base/typography";
+@import "components/content";
+@import "components/navbar";
+@import "components/footer";
+@import "components/post";
+@import "components/post-card";
+@import "pages/list";
+@import "pages/single";
+@import "pages/home";
+@import "pages/tags";
+
+.container {
+  width: 100rem;
+  margin: auto;
+}
+
+#header {
+  color: $color-primary;
+}
