@@ -1,0 +1,18 @@
+.tag-section-header {
+  display: flex;
+  border-bottom: 0.1rem solid $color-primary;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.tag-section-header {
+  a {
+    text-decoration: none;
+    color: $color-primary;
+
+    &:hover {
+      text-decoration: underline;
+      color: purple;
+    }
+  }
+}

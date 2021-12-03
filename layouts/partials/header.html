@@ -1,0 +1,13 @@
+<div id="navbar" class="navbar">
+  <a id="logo-text" href="/">Nathan Nguyen</a>
+
+  <nav id="nav">
+    <ul>
+      {{ range .Site.Menus.main -}}
+      <li class="nav-item">
+        <a class="nav-item-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</div>

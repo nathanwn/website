@@ -1,0 +1,22 @@
+{{ define "content" }}
+  <h1 id="all-tags" class="page-title">All Tags</h1>
+  {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+    <div class="tag-section-header">
+      <h2 id="{{ $name }}">#{{ $name }}</h2>
+      <a class="back-to-top" href="/tags#all-tags">
+        Top
+      </a>
+    </div>
+    {{ range $index, $page := $taxonomy.Pages }}
+      {{ partial "post-card"
+        (dict
+          "Date" .Date
+          "Params" .Params
+          "Summary" .Summary
+          "Title" .Title
+          "page" $page
+        )
+      }}
+    {{ end }}
+  {{ end }}
+{{ end }}

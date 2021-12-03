@@ -1,0 +1,24 @@
+footer {
+  margin: 2rem 2rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid black;
+}
+
+#footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#copyright {
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
+#social-links {
+  a {
+    padding: 1rem 1rem;
+  }
+  .fab {
+    color: $color-foreground;
+  }
+}

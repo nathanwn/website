@@ -1,0 +1,47 @@
+.post-card {
+  margin: 2rem 2rem;
+  padding: 1rem;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-radius: 1rem;
+
+  h2 {
+    a {
+      text-decoration: none;
+      color: $color-primary;
+    }
+  }
+
+  .date {
+    color: $color-grey;
+    font-size: 1.8rem;
+  }
+
+  .post-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .post-title {
+    text-decoration: none;
+    color: $color-primary;
+
+    &:hover {
+      color: purple;
+    }
+  }
+
+  .tags {
+    display: flex;
+  }
+
+  .tag {
+    background: $color-primary;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    padding: 0.4rem 1rem;
+  }
+}

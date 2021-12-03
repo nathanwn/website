@@ -1,0 +1,20 @@
+<div class="post-card">
+  <div class="post-details">
+    <h3>
+      <a class="post-title" href="{{ .page.RelPermalink }}"> {{ .Title }} </a>
+    </h3>
+    <div class="date">
+      <i class="far fa-calendar-alt"></i>
+      <span> {{ .Date | time.Format ":date_medium" }} </span>
+    </div>
+  </div>
+
+    <div class="summary">{{ .Summary }}</div>
+    <div class="tags">
+      {{ range .Params.tags }}
+      <div class="tag">
+        <a href="/tags/#{{ . }}">#{{ . }}</a>
+      </div>
+      {{ end }}
+    </div>
+</div>
