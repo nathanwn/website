@@ -1,0 +1,27 @@
+footer {
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0.5rem;
+
+  a {
+    font-size: 3rem;
+
+    .fab {
+      color: $color-primary;
+    }
+  }
+}
+
+.power-by {
+  a {
+    text-decoration: none;
+  }
+}

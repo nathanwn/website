@@ -1,0 +1,10 @@
+{{ if not .Params.hideHeaderAndFooter }}
+<header id="header" class="header">
+  {{ partial "header.html" . }}
+</header>
+{{ end }}
+
+<div class="content">
+  {{ block "content" . }}
+  {{ end }}
+</div>

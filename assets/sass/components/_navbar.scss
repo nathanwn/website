@@ -1,0 +1,85 @@
+@import "util/mixins";
+@import "base/base";
+@import "base/variables";
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100rem;
+  padding: 0 2rem; // topbottom leftright
+  border-bottom: 0.1rem solid $color-primary;
+  margin: auto; // everything to the middle
+  overflow: hidden;
+
+  #logo-text {
+    text-decoration: none;
+    font-family: "Redressed", cursive;
+    font-size: 4rem;
+    color: $color-primary;
+  }
+
+  #nav-icon {
+    display: none;
+  }
+
+  #nav-icon-placeholder {
+    display: none;
+  }
+
+  #nav {
+    background-color: $color-background;
+    padding: 1rem 0;
+
+    ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    li {
+      padding: 0 1rem;
+      font-size: 2.2rem;
+    }
+  }
+
+  @include respond(tab-port) {
+    flex-direction: column;
+
+    #logo-text {
+      font-size: 3rem;
+    }
+
+    #nav-icon {
+      display: flex;
+      color: black;
+      font-size: 2rem;
+      margin-top: 2rem;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    #nav-icon-placeholder {
+      display: block;
+    }
+
+    #nav {
+      padding-top: 0;
+      padding-bottom: 1rem;
+
+      li {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.nav-item-link {
+  text-decoration: none;
+  color: $color-primary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

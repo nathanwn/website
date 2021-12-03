@@ -1,0 +1,21 @@
+{{ define "content" }}
+<h1 id="title">{{ .Title }}</h1>
+
+<div class="single-post-details">
+  <div class="date">
+    <i class="far fa-calendar-alt"></i>
+    <span> {{ .Date | time.Format ":date_medium" }} </span>
+  </div>
+  <div class="tags">
+    {{ range .Params.tags }}
+    <div class="tag">{{ . }}</div>
+    {{ end }}
+  </div>
+</div>
+
+<article class="post">
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,67 @@
+{{ define "intro" }}
+
+<div id="intro">
+  {{ $pixelme := resources.Get "img/pixelme.png" }}
+  <img id="pixelme" src="{{ $pixelme.RelPermalink}}" alt="Hello">
+
+  <article class="home-post">
+    {{ .Content }}
+  </article>
+</div>
+{{ end }}
+
+{{ define "content" }}
+
+{{ block "intro" . }}
+{{ end }}
+
+<!-- Main Title -->
+{{ if .Title }}
+<h1 class="main-title">{{ .Title }}</h1>
+{{ else }}
+<h1 class="main-title"> Posts </h1>
+{{ end }}
+
+<!-- $pages -->
+{{ $pages := union .RegularPages .Sections }}
+<!---->{{ if .IsHome }} {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ end }}
+
+<!-- Articles -->
+<div class="post-list">
+  <p> These are my latest posts. </p>
+
+  {{ $paginator := .Paginate $pages }} {{ range $index, $page := $paginator.Pages }}
+  <div class="post-card">
+    <h2> <a href="{{ $page.RelPermalink }}"> {{ .Title }} </a> </h2>
+    <div class="post-details">
+      <div class="date">
+        <i class="far fa-calendar-alt"></i>
+        <span> {{ .Date | time.Format ":date_medium" }} </span>
+      </div>
+      <div class="tags">
+        {{ range .Params.tags }}
+        <div class="tag">{{ . }}</div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+
+</div>
+
+<!-- Main Nav -->
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="main-nav">
+  {{ if $paginator.HasPrev }}
+  <a class="prev" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev_page" }}</a>
+  {{ end }}
+  <!---->
+  {{ if $paginator.HasNext }}
+  <a class="next" href="{{ $paginator.Next.URL }}">{{ i18n "next_page" }} →</a>
+  {{ end }}
+</nav>
+{{ end }}
+<!---->
+
+{{ end }}

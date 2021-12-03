@@ -1,0 +1,17 @@
+baseURL = "https://nathannguyen.dev/"
+languageCode = 'en-us'
+title = 'Nathan Nguyen'
+
+[author]
+  name = "Nathan Nguyen"
+
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "About"
+  weight = 20
+  identifier = "about"
+  url = "/about/"
