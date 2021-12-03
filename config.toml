@@ -1,0 +1,24 @@
+baseURL = "https://nathannguyen.dev/"
+locale = 'en-us'
+title = 'Nathan Nguyen'
+
+[params.author]
+  name = "Nathan Nguyen"
+
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Tags"
+  weight = 20
+  identifier = "tags"
+  url = "/tags/"
+
+[taxonomies]
+tag = "tags"
+
+[markup]
+  [markup.highlight]
+    noClasses = false

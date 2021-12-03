@@ -1,0 +1,31 @@
+#intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include respond(tab-port) {
+    flex-direction: row-reverse;
+  }
+}
+
+#myphoto {
+  width: 24rem;
+  height: 24rem;
+  margin: 2rem;
+  border-radius: 50%; // make sure it stays round
+}
+
+.home-post {
+  margin: auto;
+  color: $color-foreground; // inherit theme colors
+
+  a {
+    text-decoration: underline dotted $color-grey;
+    color: $color-primary; // use primary color for links
+
+    &:hover {
+      color: $color-foreground;
+    }
+  }
+}

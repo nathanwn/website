@@ -1,0 +1,39 @@
+@import "util/mixins";
+@import "base/variables";
+@import "base/base";
+@import "base/typography";
+@import "base/syntax";
+@import "components/content";
+@import "components/navbar";
+@import "components/theme-toggle";
+@import "components/footer";
+@import "components/post";
+@import "components/post-card";
+@import "components/back-to-top";
+@import "pages/list";
+@import "pages/single";
+@import "pages/home";
+@import "pages/tags";
+
+.container {
+  width: 100%;
+  padding: 0 2rem;
+  max-width: 140rem; // Increased to give post+TOC more breathing room
+  margin: auto;
+}
+
+#header {
+  color: $color-primary;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: color-mix(in srgb, var(--color-background) 85%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  // Create full width background while keeping content constrained
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

@@ -1,0 +1,169 @@
+h1 {
+  font-weight: normal;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+strong, b {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-bold, inherit);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+  }
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-size: 1em;
+}
+
+// Inline code styling
+code {
+  background: $color-surface;
+  color: $color-primary;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.4rem;
+}
+
+.code-block-wrapper {
+  border: 0.1rem solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  position: relative;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+
+  .code-block-header {
+    background-color: color-mix(in srgb, var(--color-surface) 88%, var(--color-foreground) 12%);
+    color: var(--color-text-muted);
+    padding: 0.6rem 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-bold);
+    border-bottom: 0.1rem solid var(--color-border);
+    display: flex;
+    align-items: center;
+  }
+
+  .highlight,
+  pre,
+  pre:not(.chroma) {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    background: transparent;
+  }
+}
+
+.highlight {
+  border: 0.1rem solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  position: relative;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+
+  pre {
+    padding: 1.5rem;
+    margin: 0;
+    background: transparent;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    // Reset for code blocks so they don't double up on styles
+    code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+  }
+
+  // Copy button styling
+  .copy-code-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--color-background);
+    color: var(--color-text-muted);
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1.2rem;
+    font-family: inherit;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--color-primary);
+      color: var(--color-background);
+      border-color: var(--color-primary);
+    }
+  }
+
+  &:hover .copy-code-btn {
+    opacity: 1;
+  }
+}
+
+// Fallback for non-highlight pre blocks
+pre:not(.chroma) {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  border: 0.1rem solid var(--color-border);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 1.5rem;
+
+  code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+}
+
+ul, ol {
+  padding-left: 2rem;
+  margin-bottom: 1.25rem;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  // Handle nested lists seamlessly
+  ul, ol {
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 0.4rem solid var(--color-primary);
+  background: var(--color-surface);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--color-foreground);
+
+  p:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+

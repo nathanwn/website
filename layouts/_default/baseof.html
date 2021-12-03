@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    </script>
+    <script
+      src="https://kit.fontawesome.com/f715081bf2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Fira+Code:wght@400;600&family=Inter:ital,wght@0,400;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+    {{ $js := resources.Get "js/main.js" | js.Build "main.js" | minify |
+    fingerprint }}
+    <script src="{{ $js.Permalink }}"></script>
+
+    <title>Nathan Nguyen - Home</title>
+  </head>
+
+  <body>
+    {{- $cmd := "ls -la" -}}
+    {{- if .IsHome -}}
+      {{- $cmd = "cd ~" -}}
+    {{- else if .IsPage -}}
+      {{- $filename := "post.md" -}}
+      {{- if .File -}}{{- $filename = .File.LogicalName -}}{{- end -}}
+      {{- $cmd = printf "cat %s" $filename -}}
+    {{- else if eq .Type "tags" -}}
+      {{- if eq .Title "Tags" -}}
+        {{- $cmd = "find . -type tags" -}}
+      {{- else -}}
+        {{- $cmd = printf "find . -type tags -name %s" (lower .Title) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $len := len $cmd -}}
+    <div class="container" style="--chars: {{ $len }};">
+      {{ if not .Params.hideHeaderAndFooter }}
+      <header id="header" class="header">{{ partial "header.html" . }}</header>
+      {{ end }}
+
+      <div class="content">{{ block "content" . }} {{ end }}</div>
+
+      {{ if not .Params.hideHeaderAndFooter }} {{ partial "footer.html" . }} {{
+      end }}
+
+      <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+  </body>
+</html>

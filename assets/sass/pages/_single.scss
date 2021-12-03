@@ -1,0 +1,116 @@
+.single-post-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  @include respond(tab-port) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  .meta-info {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    align-items: center;
+    color: var(--color-text-muted, grey);
+    font-size: 1.6rem;
+  }
+
+  .tags {
+    display: flex;
+  }
+
+  .tag {
+    background: $color-primary;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+.tag {
+  background: $color-primary;
+  display: inline-flex;  // Set the display to inline-flex to allow the box to wrap the word
+  align-items: center;   // Center the content vertically within the box
+  justify-content: center; // Center the content horizontally within the box
+  border-radius: 1rem;
+  padding: 0.4rem 1rem;
+
+  a {
+    color: white;
+    text-decoration: none; // Disable underline.
+  }
+
+  &:hover {
+    background: purple;
+  }
+}
+
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @import "../util/mixins";
+
+  @include respond(tab-port) {
+    grid-template-columns: 3fr 1fr;
+    align-items: start;
+  }
+}
+
+.post {
+  min-width: 0; // Fixes CSS Grid blowout on mobile
+}
+
+.post-toc {
+  display: none; // Hidden on mobile
+
+  @include respond(tab-port) {
+    display: block;
+    position: sticky;
+    top: 8rem; // Below the sticky navbar
+    padding: 1rem;
+    padding-left: 2rem;
+    border-left: 0.2rem solid var(--color-border);
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
+
+    #TableOfContents {
+      ul {
+        list-style: none;
+        padding-left: 1rem;
+
+        li {
+          margin-bottom: 0.5rem;
+
+          a {
+            text-decoration: none;
+            color: var(--color-text-muted);
+            font-size: 1.4rem;
+
+            &:hover {
+              color: var(--color-primary);
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      // Remove padding for top-level list
+      > ul {
+        padding-left: 0;
+      }
+    }
+  }
+}

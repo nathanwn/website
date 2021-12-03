@@ -1,0 +1,35 @@
+{{ define "content" }}
+<h1 class="page-title">{{ .Title }}</h1>
+
+<div class="single-post-details">
+  <div class="meta-info">
+    <div class="date">
+      <i class="far fa-calendar-alt"></i>
+      <span> {{ .Date | time.Format "January 2006" }} </span>
+    </div>
+    <div class="reading-time">
+      <i class="far fa-clock"></i>
+      <span> {{ .ReadingTime }} min read ({{ .WordCount }} words) </span>
+    </div>
+  </div>
+  <div class="tags">
+    {{ range .Params.tags }}
+    <div class="tag">
+      <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+<div class="post-layout">
+  <article class="post">
+    <div class="post-content">{{ .Content }}</div>
+  </article>
+
+  {{ if ne .Params.toc false }}
+  <aside class="post-toc">
+    {{ .TableOfContents }}
+  </aside>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,52 @@
+{{ define "intro" }}
+
+<div id="intro">
+  {{ $myphoto := resources.Get "img/me-round.png" }}
+  <img id="myphoto" src="{{ $myphoto.RelPermalink}}" alt="Hello" />
+  <article class="home-post">{{ .Content }}</article>
+</div>
+{{ end }} {{ define "content" }} {{ block "intro" . }} {{ end }}
+
+<!-- Main Title -->
+{{ if .Title }}
+<h1 class="main-title">{{ .Title }}</h1>
+{{ else }}
+<h1 class="main-title">Posts</h1>
+{{ end }}
+
+<!-- $pages -->
+{{ $pages := union .RegularPages .Sections }}
+<!---->{{ if .IsHome }} {{ $pages = where site.RegularPages "Type" "in"
+site.Params.mainSections }} {{ end }}
+
+<!-- Articles -->
+<div class="post-list">
+  {{ $paginator := .Paginate $pages }}
+  {{ range $index, $page := $paginator.Pages }}
+    {{ partial "post-card"
+      (dict
+        "Date" .Date
+        "Params" .Params
+        "Summary" .Summary
+        "Title" .Title
+        "page" $page
+      )
+    }}
+  {{ end }}
+</div>
+
+<!-- Main Nav -->
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="main-nav">
+  {{ if $paginator.HasPrev }}
+  <a class="prev" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev_page" }}</a>
+  {{ end }}
+  <!---->
+  {{ if $paginator.HasNext }}
+  <a class="next" href="{{ $paginator.Next.URL }}">{{ i18n "next_page" }} →</a>
+  {{ end }}
+</nav>
+{{ end }}
+<!---->
+
+{{ end }}

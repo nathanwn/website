@@ -1,0 +1,148 @@
+@import "../util/mixins";
+
+#navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 140rem; // Match container width
+  padding: 0; // mobile padding
+  border-bottom: 0.1rem solid $color-primary;
+  margin: auto;
+  overflow: hidden;
+
+  #logo-text {
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-variant-ligatures: none;
+    font-size: 1.8rem; // mobile size
+    font-weight: 600;
+    color: $color-primary;
+    margin-top: 1rem;
+    letter-spacing: -0.1rem;
+
+    .cwd {
+      color: var(--color-primary);
+    }
+    .prompt {
+      color: var(--color-text-muted, grey);
+      font-weight: 400;
+    }
+    .command {
+      display: none;
+      color: var(--color-foreground, black);
+      font-weight: 400;
+      overflow: hidden;
+      white-space: pre;
+      vertical-align: bottom;
+      // Typing animation for terminal command prompt in the logo (disabled for now)
+      // Max 0.05s per character, but absolutely capped at 0.4s total
+      // animation: typing unquote("min(0.4s, calc(var(--chars) * 0.05s))") steps(var(--chars), end) forwards;
+      // width: calc(var(--chars) * 1ch);
+    }
+
+    // Keyframes for the typing effect of the navbar terminal command (disabled for now)
+    // @keyframes typing {
+    //   from { width: 0; }
+    //   to { width: calc(var(--chars) * 1ch); }
+    // }
+
+    .cursor {
+      color: var(--color-primary);
+      &::after {
+        content: "_";
+      }
+    }
+  }
+
+  #nav-icon {
+    display: flex;
+    color: $color-foreground;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  #nav-icon-placeholder {
+    display: block;
+  }
+
+  #nav {
+    background-color: transparent;
+    padding: 1rem 0;
+    width: 100%;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0;
+      font-size: 2rem; // mobile size
+      width: 9rem; // tighter uniform slot size
+    }
+  }
+
+  @include respond(tab-port) {
+    flex-direction: row;
+    align-items: baseline;
+    padding: 0.5rem 2rem;
+
+    #logo-text {
+      font-size: 2.2rem;
+      margin-top: 0;
+
+      .command { display: inline-block; }
+    }
+
+    #nav-icon,
+    #nav-icon-placeholder {
+      display: none;
+    }
+
+    #nav {
+      width: auto;
+      padding: 0;
+      margin-top: 0;
+
+      ul {
+        justify-content: flex-end;
+      }
+
+      li {
+        font-size: 2.2rem;
+        padding: 0;
+        width: 9rem; // tighter uniform slot size for desktop
+      }
+    }
+  }
+}
+
+.nav-item-link {
+  text-decoration: none;
+  color: $color-primary;
+  font-family: var(--font-mono);
+
+  &:hover {
+    text-decoration: underline;
+    text-transform: lowercase;
+
+    &::before {
+      content: "./";
+      opacity: 0.5;
+    }
+  }
+}

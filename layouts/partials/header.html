@@ -1,0 +1,39 @@
+<div id="navbar" class="navbar">
+  <a id="logo-text" href="/">
+    <span class="cwd">nathannguyen.dev</span><span class="prompt"> &gt; </span>  {{- $cmd := "ls -la" -}}
+  {{- if .IsHome -}}
+    {{- $cmd = "cd ~" -}}
+  {{- else if .IsPage -}}
+    {{- $filename := "post.md" -}}
+    {{- if .File -}}{{- $filename = .File.LogicalName -}}{{- end -}}
+    {{- $cmd = printf "cat %s" $filename -}}
+  {{- else if eq .Type "tags" -}}
+    {{- if eq .Title "Tags" -}}
+      {{- $cmd = "find . -type tags" -}}
+    {{- else -}}
+      {{- $cmd = printf "find . -type tags -name %s" (lower .Title) -}}
+    {{- end -}}
+  {{- end -}}
+  <span class="command">{{ $cmd }}</span><span class="cursor"></span>
+  </a>
+
+  <nav id="nav">
+    <ul>
+      {{ range .Site.Menus.main -}}
+      <li class="nav-item">
+        <a class="nav-item-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+      <li class="nav-item">
+        <button id="font-toggle" aria-label="Toggle Font" title="Toggle Classic/Modern Font Theme" class="theme-toggle">
+          <span id="font-icon" style="font-family: var(--font-primary); font-weight: var(--font-weight-bold); font-size: 1.2em; line-height: 1;">A</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button id="theme-toggle" aria-label="Toggle Theme" title="Toggle Light/Dark theme" class="theme-toggle">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

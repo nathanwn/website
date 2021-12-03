@@ -1,0 +1,29 @@
+<div class="post-card">
+  <div class="post-details">
+    <h3>
+      <a class="post-title" href="{{ .page.RelPermalink }}"> {{ .Title }} </a>
+    </h3>
+    <div class="meta-info">
+      <div class="date">
+        <i class="far fa-calendar-alt"></i>
+        <span> {{ .Date | time.Format "January 2006" }} </span>
+      </div>
+    </div>
+  </div>
+
+    <div class="summary">{{ .Summary }}</div>
+
+    <div class="card-footer">
+      <div class="tags">
+        {{ range .Params.tags }}
+        <div class="tag">
+          <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+        </div>
+        {{ end }}
+      </div>
+      <div class="reading-time">
+        <i class="far fa-clock"></i>
+        <span> {{ .page.ReadingTime }} min read ({{ .page.WordCount }} words) </span>
+      </div>
+    </div>
+</div>

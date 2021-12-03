@@ -1,0 +1,48 @@
+:root {
+  // --- Cyan Light IntelliJ (Light Theme - Preserved) ---
+  // --color-background: #f5f8f9;
+  // --color-surface: #ffffff;
+  // --color-foreground: #2c3e50;
+  // --color-text-muted: #5c7c8a;
+  // --color-primary: #007b83;
+  // --color-primary-hover: #005b63;
+  // --color-grey: #eaf0f2;
+  // --color-border: #d0dbe0;
+
+  // --- Catppuccin Latte (Light Theme - Active) ---
+  --color-background: #eff1f5;
+  --color-surface: #e6e9ef;
+  --color-foreground: #4c4f69;
+  --color-text-muted: #6c6f85;
+  --color-primary: #1e66f5;
+  --color-primary-hover: #209fb5;
+  --color-grey: #ccd0da;
+  --color-border: #9ca0b0;
+
+  // --- Nvim Light / TokyoNight Day (Preserved) ---
+  // (Removed to keep file clean, can be restored from Git history)
+
+  --website-width: 100rem;
+}
+
+[data-theme="dark"] {
+  // --- Catppuccin Frappe (Dark Theme) ---
+  --color-background: #303446;
+  --color-surface: #292c3c; // mantle
+  --color-foreground: #c6d0f5;
+  --color-text-muted: #a5adce;
+  --color-primary: #8caaee; // blue
+  --color-primary-hover: #babbf1; // lavender
+  --color-grey: #414559; // surface0
+  --color-border: #737994; // overlay0
+}
+
+// Map SCSS variables to CSS custom properties
+$color-primary: var(--color-primary);
+$color-background: var(--color-background);
+$color-foreground: var(--color-foreground);
+$color-text-muted: var(--color-text-muted);
+$color-grey: var(--color-grey);
+$color-border: var(--color-border);
+$color-surface: var(--color-surface);
+$website-width: var(--website-width);

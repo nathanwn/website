@@ -1,0 +1,87 @@
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  scroll-padding-top: 8rem; // Prevents sticky navbar from covering anchor links
+  scroll-behavior: smooth;  // Adds smooth scrolling when clicking ToC links
+  font-size: 50%; // 1rem = 8px (Mobile base)
+
+  @include respond(tab-port) {
+    font-size: 56.25%; // 1rem = 9px (Tablet)
+  }
+
+  @include respond(tab-land) {
+    font-size: 62.5%; // 1rem = 10px (Desktop)
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px (Large Desktop)
+  }
+}
+
+:root {
+  --font-primary: "Merriweather", serif;
+  --font-mono: "Fira Code", monospace;
+  --font-weight-bold: 900;
+}
+
+[data-font-theme="sans"] {
+  --font-primary: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-weight-bold: 700;
+}
+
+body {
+  box-sizing: border-box; // https://www.w3schools.com/css/css3_box-sizing.asp
+  background: $color-background;
+  color: $color-foreground;
+  font-family: var(--font-primary);
+  font-size: 1.875rem; // 15px on mobile
+  color-scheme: light dark;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  @include respond(tab-port) {
+    font-size: 1.77rem; // ~16px on tablet
+  }
+  @include respond(tab-land) {
+    font-size: 1.7rem; // 17px on desktop
+  }
+  @include respond(big-desktop) {
+    font-size: 1.6rem; // ~19px on large desktop
+  }
+  line-height: 1.6;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.content {
+  flex: 1;
+}
+
+// Delayed reveal animation for nav, main content, and footer synchronized with logo typing (disabled for now)
+// #nav, .content, footer {
+//   // Syncs with the dynamic min() duration of the typing animation
+//   animation: revealContent 0.5s unquote("min(0.4s, calc(var(--chars) * 0.05s))") both;
+// }
+// 
+// @keyframes revealContent {
+//   from {
+//     opacity: 0;
+//     transform: translateY(10px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }

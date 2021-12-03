@@ -1,0 +1,11 @@
+{{- $filename := .Attributes.file | default .Attributes.title | default .Attributes.filename -}}
+{{- if $filename -}}
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <span class="code-block-filename">{{ $filename }}</span>
+  </div>
+  {{ (transform.HighlightCodeBlock .).Wrapped }}
+</div>
+{{- else -}}
+  {{ (transform.HighlightCodeBlock .).Wrapped }}
+{{- end -}}
