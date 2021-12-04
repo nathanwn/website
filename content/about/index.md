@@ -4,9 +4,7 @@ date: 2021-12-04T00:17:06+10:00
 draft: false
 ---
 
-# About me
-
-My name is Nhat Minh Nguyen, but these days I usually go with "Nathan". I am from Saigon, Vietnam. I currently live in Brisbane after moving here at the beginning of 2020.
+My name is Nhat Minh Nguyen, but these days I usually go with "Nathan" living in an English-speaking country. I am from Saigon, Vietnam. I currently live in Brisbane after moving here at the beginning of 2020.
 
 I am expecting to graduate from the [University of Queensland](https://www.uq.edu.au/) this December, with a Bachelor's (Honours) degree in Software Engineering.
 
@@ -34,11 +32,13 @@ There are topics that I would love to study more in-depth, namely Machine Learni
 
 Programming Languages that I have used quite a lot include C, C++, Java, Python, and TypeScript. I learned some Scala during my last semester at UQ when doing the Program Analysis course, catching a glimpse of what functional programming is about. Scala, Haskell, and Rust are the languages that I plan to study sometime in the future.
 
-I have no strong opinion of which programming language is the best. I am evenly happy to code in any language, as long as it is suitable for the job :).
+I have no strong opinion of which programming language is the best. I am evenly happy to use any language, as long as it is suitable for the job :).
 
 ## Tools
 
-I am typically a Linux user. The current daily driver on my main laptop is Ubuntu 20.04 with [i3](https://i3wm.org/) window-manager. I myself view using computers, as an activity, somewhat similar to playing instruments (yes, I do play music). Therefore, I can be a bit picky when configuring my own machine, especially in terms of keystrokes. However, I can work comfortably on any OSes (Windows, Mac) and adapt quickly to any development environment.
+I am typically a Linux user. The current daily driver on my main laptop is Ubuntu 20.04 with [i3](https://i3wm.org/) window-manager. I myself view using computers, as an activity, somewhat similar to playing instruments (yes, I do play music). Therefore, I can be a bit picky when configuring my own machine, especially in terms of key-mappings. All of my dotfiles can be found [here](https://github.com/nathan-wien/dotfiles).
+
+However, I can work comfortably on any OSes (Windows, Mac) and adapt quickly to any development environment. I have to admit that Windows and Mac have their own upsides when it comes to different kinds of work.
 
 I am a [neovim](neovim.io) user. At the same time, I acknowledge that VSCode is a very fine piece of technology, paving the way for the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) that allows for real-time auto-completion, linting, and other useful features (without which my neovim experience would not be at great, so thanks VSCode!). I am also a big fan of JetBrains IDEs. 
 
