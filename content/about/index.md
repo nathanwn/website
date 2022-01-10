@@ -24,7 +24,7 @@ The topic that fascinated me the most in Computer Science would be classical Alg
 
 ## Programming Languages
 
-Programming Languages that I have used quite a lot include C, C++, Java, Python, and TypeScript. I learned some Scala during my last semester at uni and tried using it for [Advent of Code 2021](https://adventofcode.com/2021/). I plan to study Rust sometime in the future - it looks like a language for me.
+Programming Languages that I have used quite a lot include C, C++, Java, Python, and TypeScript. I learned some Scala during my last semester at uni and tried using it for [Advent of Code 2021](https://adventofcode.com/2021/) ([my solutions](https://github.com/nathan-wien/aoc-2021)). I plan to study Rust sometime in the future - it looks like a language for me.
 
 I have no strong opinion of which programming language is the best. I am evenly happy to use any language, as long as it is suitable for the job :).
 
