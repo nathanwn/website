@@ -1,0 +1,53 @@
+<html lang=en><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><script>const savedTheme=localStorage.getItem("theme"),systemPrefersDark=window.matchMedia("(prefers-color-scheme: dark)").matches;savedTheme==="dark"||!savedTheme&&systemPrefersDark?document.documentElement.setAttribute("data-theme","dark"):document.documentElement.setAttribute("data-theme","light")</script><script src=https://kit.fontawesome.com/f715081bf2.js crossorigin=anonymous></script><script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><link rel=preconnect href=https://fonts.gstatic.com><link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Fira+Code:wght@400;600&family=Inter:ital,wght@0,400;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;600&display=swap" rel=stylesheet><link rel=stylesheet href=https://nathannguyen.dev/sass/main.min.bdf123bc66bb63c611aa16067d20e08704737052939951ec4fc028611aa374b4.css><script src=https://nathannguyen.dev/main.min.c34811ee368a0b17409992e374587a4906778a1cd2a7f5fbed3b2c75c7cb7cda.js></script><title>Nathan Nguyen - Home</title></head><body><div class=container style=--chars:26><header id=header class=header><div id=navbar class=navbar><a id=logo-text href=/><span class=cwd>nathannguyen.dev</span><span class=prompt> > </span><span class=command>cat build-java-packages.md</span><span class=cursor></span></a><nav id=nav><ul><li class=nav-item><a class=nav-item-link href=/>Home</a></li><li class=nav-item><a class=nav-item-link href=/tags/>Tags</a></li><li class=nav-item><button id=font-toggle aria-label="Toggle Font" title="Toggle Classic/Modern Font Theme" class=theme-toggle>
+<span id=font-icon style=font-family:var(--font-primary);font-weight:var(--font-weight-bold);font-size:1.2em;line-height:1>A</span></button></li><li class=nav-item><button id=theme-toggle aria-label="Toggle Theme" title="Toggle Light/Dark theme" class=theme-toggle>
+<i class="fas fa-sun" id=theme-icon></i></button></li></ul></nav></div></header><div class=content><h1 class=page-title>Building Java: Java packages</h1><div class=single-post-details><div class=meta-info><div class=date><i class="far fa-calendar-alt"></i>
+<span>September 2026</span></div><div class=reading-time><i class="far fa-clock"></i>
+<span>3 min read (638 words)</span></div></div><div class=tags><div class=tag><a href=/tags/build>#build</a></div><div class=tag><a href=/tags/java-build>#java-build</a></div></div></div><div class=post-layout><article class=post><div class=post-content><blockquote><p>This article is part of the <strong><a href=/tags/java-build/>Building Java</a></strong> series:</p><ol><li><a href=/posts/build-java-classpath/>The Classpath</a></li><li><a href=/posts/build-java-packages/>Java Packages</a> <em>(this article)</em></li></ol></blockquote><h2 id=introduction-to-java-packages>Introduction to Java packages</h2><p>What are packages, and why do we need them?</p><p>The <a href=https://docs.oracle.com/javase/tutorial/java/package/packages.html>Java official documentation</a> says:</p><blockquote><p>A package is a grouping of related types providing access protection and name space management.</p></blockquote><p>The <a href=https://docs.oracle.com/javase/specs/jls/se8/html/jls-7.html#jls-7.2>Java Language Specification</a> says:</p><blockquote><p>For small programs and casual development, a package can be unnamed or have a simple name, but if code is to be widely distributed, unique package names should be chosen using qualified names. This can prevent the conflicts that would otherwise occur if two development groups happened to pick the same package name and these packages were later to be used in a single program.</p></blockquote><p>For example, you can have two classes of the same name, <code>Main</code>, if they belong to two different packages, <code>foo</code> and <code>bar</code>. In this case, they are two classes with different fully-qualified class names (FQCNs):</p><ul><li><code>foo.Main</code></li><li><code>bar.Main</code></li></ul><p>Packages are declared through the use of the <code>package</code> statement.</p><p>By convention, package names are written in all lower case using reversed Internet domain names.</p><p>For example, the <code>Main</code> class below belongs to the <code>com.example</code> package.</p><div class=code-block-wrapper><div class=code-block-header><span class=code-block-filename>Main.java</span></div><div class=highlight file=Main.java><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>package</span><span class=w> </span><span class=nn>com.example</span><span class=p>;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=kd>public</span><span class=w> </span><span class=kd>class</span> <span class=nc>Main</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=kd>public</span><span class=w> </span><span class=kd>static</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>main</span><span class=p>(</span><span class=n>String</span><span class=o>[]</span><span class=w> </span><span class=n>args</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>System</span><span class=p>.</span><span class=na>out</span><span class=p>.</span><span class=na>println</span><span class=p>(</span><span class=s>&#34;Hello!&#34;</span><span class=p>);</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div><h2 id=compiling-and-running-classes-with-packages>Compiling and running classes with packages</h2><p>Let&rsquo;s now compile the <code>Main.java</code> file above and run it.</p><pre tabindex=0><code>&gt; javac Main.java
+
+&gt; ls
+Main.class Main.java
+
+&gt; java Main
+Error: Could not find or load main class Main
+Caused by: java.lang.NoClassDefFoundError: Main (wrong name: com/example/Main)</code></pre><p>Now we cannot run the class with the short class name <code>Main</code> anymore.</p><p>What if we use the FQCN instead?</p><pre tabindex=0><code>&gt; java com.example.Main
+Error: Could not find or load main class com.example.Main
+Caused by: java.lang.ClassNotFoundException: com.example.Main</code></pre><p>It turns out that Java expects the <code>Main.class</code> file to be under a directory hierarchy matching the package name of the <code>com.example.Main</code> class. The <a href=https://docs.oracle.com/javase/8/docs/technotes/tools/unix/findingclasses.html>Java documentation</a> says:</p><blockquote><p>A class file has a subpath name that reflects the fully-qualified name of the class. For example, if the class com.mypackage.MyClass is stored under myclasses, then myclasses must be in the user class path, and the full path to the class file must be myclasses/com/mypackage/MyClass.class.</p></blockquote><p>In this case, we want <code>Main.class</code> to be stored under <code>com/example</code>. We can let <code>javac</code> do that automatically for us with the <code>-d .</code> argument, which tells the compiler the destination root directory for the compiled class hierarchy.</p><pre tabindex=0><code>&gt; javac -d . Main.java
+
+&gt; tree
+.
+├── com
+│   └── example
+│       └── Main.class
+└── Main.java
+
+&gt; java com.example.Main
+Hello!</code></pre><p>In real projects, there are a few things we normally want to do.</p><p>First, we also want to match the source directory structure to the package hierarchy to avoid confusion. This explains why in a lot of Java projects, source files are stored in a few layers of nested directories, which might seem counter-intuitive for people who are new to Java.</p><p>Second, we usually want to separate compiled <code>.class</code> files from the source files by producing them to a separate destination.</p><p>For example, let&rsquo;s put the <code>.java</code> files in a <code>src</code> directory and create the <code>.class</code> files in a <code>classes</code> directory.</p><pre tabindex=0><code>&gt; tree .
+.
+└── src
+    └── com
+        └── example
+            └── Main.java
+
+&gt; javac -d classes src/com/example/Main.java
+
+&gt; tree .
+.
+├── classes
+│   └── com
+│       └── example
+│           └── Main.class
+└── src
+    └── com
+        └── example
+            └── Main.java
+
+&gt; java -classpath classes com.example.Main
+Hello!</code></pre><h2 id=directory-structures-in-projects-using-common-java-build-systems>Directory structures in projects using common Java build systems</h2><p>If you have used common Java build systems such as Maven or Gradle before, you must be familiar with this kind of directory hierarchy we have discussed.</p><ul><li>In <code>Maven</code> projects, classes are produced under <code>target/classes/&lt;packages></code>.</li><li>In <code>Gradle</code> projects, classes are by default produced under <code>build/classes/java/&lt;sourceSetName>/&lt;packages></code>. (For example, <code>sourceSetName</code> could be <code>main</code>. As this article is not about Gradle, we won&rsquo;t go into what a source set is in Gradle).</li></ul></div></article><aside class=post-toc><nav id=TableOfContents><ul><li><a href=#introduction-to-java-packages>Introduction to Java packages</a></li><li><a href=#compiling-and-running-classes-with-packages>Compiling and running classes with packages</a></li><li><a href=#directory-structures-in-projects-using-common-java-build-systems>Directory structures in projects using common Java build systems</a></li></ul></nav></aside></div></div><footer id=footer class=footer><div id=footer-container><div id=copyright><span>© 2024 - 2026 Nathan Nguyen</span></div><div id=social-links><a href=https://www.linkedin.com/in/nhat-m-nguyen class="iconfont icon-linkedin" title=linkedin target=_blank rel="noopener noreferrer"><i class="fab fa-linkedin"></i>
+</a><a href=https://github.com/nathanwn class="iconfont icon-github" title=github target=_blank rel="noopener noreferrer"><i class="fab fa-github"></i></a></div></div></footer><button id=back-to-top-btn class=back-to-top-btn aria-label="Back to Top">
+<i class="fas fa-arrow-up"></i></button></div></body></html>
